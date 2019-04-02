@@ -1,19 +1,19 @@
 'use strict'
 
-const fs = require('fs')
-const path = require('path')
-const util = require('util')
-const map = require('map-stream')
-const hrtime = require('pretty-hrtime')
 const ansi = require('ansi-colors')
-
 const chmod = require('gulp-chmod')
-const rename = require('gulp-rename')
+const del = require('del')
+const fs = require('fs')
+const hrtime = require('pretty-hrtime')
+const map = require('map-stream')
 const mustache = require('gulp-mustache')
+const path = require('path')
+const rename = require('gulp-rename')
+const util = require('util')
 
 const exec = require('child_process').execFile
-const log = require('errorlog')()
 const Gulp = require('gulp').Gulp
+const log = require('errorlog')()
 
 function print(destdir) {
   return map((file, cb) => {
@@ -107,7 +107,8 @@ function debianize(dir = process.cwd()) {
   })
 
   gulp.task('copy_package_files', () => {
-    const files = pkg.files || [ './**', '!./node_modules/**' ]
+    const files = (pkg.files || [ './**', '!./node_modules/**' ])
+        .map((glob) => glob.endsWith('/') ? glob + '**' : glob)
 
     return gulp
         .src(files, { base: '.' })
@@ -194,6 +195,9 @@ function debianize(dir = process.cwd()) {
     })
   })
 
+  /* Cleanup ... */
+  gulp.task('clean', () => del('debian'))
+
   /* ======================================================================== *
    * GULP RUN                                                                 *
    * ======================================================================== */
@@ -208,7 +212,7 @@ function debianize(dir = process.cwd()) {
       log.info(`Task ${ansi.magenta(evt.name)} done in ${hrtime(evt.duration)}`)
     })
 
-    gulp.series([ 'prepare_package', 'build_package' ])((error) => {
+    gulp.series([ 'clean', 'prepare_package', 'build_package' ])((error) => {
       if (error) return reject(error)
       return resolve()
     })
