@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "ansi-colors": "^3.2.4",
+    "del": "^4.1.0",
     "errorlog": "^1.4.6",
     "gulp": "^4.0.0",
     "gulp-chmod": "^2.0.0",
