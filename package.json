@@ -1,6 +1,6 @@
 {
   "name": "@koerber/debianize",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Make a Node.JS Debian package",
   "homepage": "https://github.com/KoerberDigitalDevTeam/debianize",
   "repository": "gith@github.com/KoerberDigitalDevTeam/debianize",
@@ -24,8 +24,7 @@
     "gulp-mustache": "^4.1.1",
     "gulp-rename": "^1.4.0",
     "map-stream": "0.0.7",
-    "pretty-hrtime": "^1.0.3",
-    "vinyl-source-stream": "^2.0.0"
+    "pretty-hrtime": "^1.0.3"
   },
   "bin": {
     "debianize": "main.js"
