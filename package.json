@@ -1,0 +1,36 @@
+{
+  "name": "@koerber/debianize",
+  "version": "0.0.1",
+  "description": "Make a Node.JS Debian package",
+  "homepage": "https://github.com/KoerberDigitalDevTeam/debianize",
+  "repository": "gith@github.com/KoerberDigitalDevTeam/debianize",
+  "main": "index.js",
+  "keywords": [
+    "debian",
+    "gulp"
+  ],
+  "scripts": {
+    "lint": "eslint --cache '.eslintrc.js' '**/*js'",
+    "lintfix": "eslint --cache '.eslintrc.js' '**/*js' --fix"
+  },
+  "author": "Pier Fumagalli <pier.fumagalli@koerber.digital>",
+  "license": "MIT",
+  "dependencies": {
+    "ansi-colors": "^3.2.4",
+    "errorlog": "^1.4.6",
+    "gulp": "^4.0.0",
+    "gulp-chmod": "^2.0.0",
+    "gulp-mustache": "^4.1.1",
+    "gulp-rename": "^1.4.0",
+    "map-stream": "0.0.7",
+    "pretty-hrtime": "^1.0.3",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "bin": {
+    "debianize": "main.js"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.12.0"
+  }
+}
