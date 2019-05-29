@@ -66,8 +66,7 @@ function debianize(dir = process.cwd()) {
   /* Dependencies */
   const deps = deb.depends ? Array.isArray(deb.depends) ? deb.depends : [ deb.depends ] : []
   if (! deps.find((d) => d.match(/^nodejs/))) {
-    const v = process.version.match(/^v([\d]+)\.([\d]+)\./).slice(1, 3).join('.')
-    deps.unshift(`nodejs (>= ${v})`)
+    deps.unshift(`nodejs (>= ${process.version.match(/^v([\d]+)\./)[1]})`)
   }
   data.depends = deps.join(', ')
 
