@@ -1,6 +1,6 @@
 {
   "name": "@koerber/debianize",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Make a Node.JS Debian package",
   "homepage": "https://github.com/KoerberDigitalDevTeam/debianize",
   "repository": "gith@github.com/KoerberDigitalDevTeam/debianize",

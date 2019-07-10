@@ -189,8 +189,10 @@ function debianize(dir = process.cwd()) {
     ]
     args.unshift(fakeroot ? 'dpkg-deb' : '--root-owner-group')
 
-    log.info(`Executing ${ansi.yellow('dpkg-deb')} ${ansi.green(args.join(' '))}`)
-    exec(fakeroot ? 'fakeroot' : 'dpkg-deb', args, (err, stdout, stderr) => {
+    const binary = fakeroot ? 'fakeroot' : 'dpkg-deb'
+
+    log.info(`Executing ${ansi.yellow(binary)} ${ansi.green(args.join(' '))}`)
+    exec(binary, args, (err, stdout, stderr) => {
       if (stderr) log.error(stderr)
       callback(err)
     })
