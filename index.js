@@ -181,14 +181,16 @@ function debianize(dir = process.cwd()) {
 
   /* Finally, make our debian package */
   gulp.task('build_package', (callback) => {
+    const fakeroot = process.env.USE_FAKEROOT && true || false
+
     const args = [
-      '--root-owner-group',
       '-b', 'debian',
       `${data.name}_${data.version}_${data.architecture}.deb`,
     ]
+    args.unshift(fakeroot ? 'dpkg-deb' : '--root-owner-group')
 
     log.info(`Executing ${ansi.yellow('dpkg-deb')} ${ansi.green(args.join(' '))}`)
-    exec('dpkg-deb', args, (err, stdout, stderr) => {
+    exec(fakeroot ? 'fakeroot' : 'dpkg-deb', args, (err, stdout, stderr) => {
       if (stderr) log.error(stderr)
       callback(err)
     })
