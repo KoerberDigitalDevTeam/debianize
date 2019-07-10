@@ -1,6 +1,6 @@
 {
   "name": "@koerber/debianize",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Make a Node.JS Debian package",
   "homepage": "https://github.com/KoerberDigitalDevTeam/debianize",
   "repository": "gith@github.com/KoerberDigitalDevTeam/debianize",
@@ -16,8 +16,8 @@
   "author": "Pier Fumagalli <pier.fumagalli@koerber.digital>",
   "license": "MIT",
   "dependencies": {
-    "ansi-colors": "^3.2.4",
-    "del": "^4.1.1",
+    "ansi-colors": "^4.1.1",
+    "del": "^5.0.0",
     "errorlog": "^1.4.6",
     "gulp": "^4.0.2",
     "gulp-chmod": "^3.0.0",
@@ -30,7 +30,7 @@
     "debianize": "main.js"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
+    "eslint": "^6.0.1",
     "eslint-config-google": "^0.13.0"
   }
 }
